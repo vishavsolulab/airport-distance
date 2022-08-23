@@ -21,7 +21,7 @@ const render = (status: string) => {
 
 const Map: FunctionComponent<MapProps> = ({ from, to }) => {
   const center = { lat: from.latitude, lng: from.longitude };
-  const zoom = 2;
+  const zoom = 3;
 
   return (
     <Wrapper apiKey="AIzaSyAIoONB5C_eYpN-WedVbXaMK4lFbOTHtDI" render={render}>

@@ -52,6 +52,8 @@ const MapComponent: FunctionComponent<MapComponentProps> = ({
     });
     userCoordinate.setMap(map);
 
+    map.setCenter(userCoordinate);
+
     for (var i = 0; i < userCoor.length; i++) {
       new google.maps.Marker({
         position: new google.maps.LatLng(userCoor[i][1], userCoor[i][2]),
