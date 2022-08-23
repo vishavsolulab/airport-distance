@@ -1,0 +1,53 @@
+.App {
+  text-align: center;
+  max-width: 100vw;
+}
+.left-container {
+  width: 50%;
+  min-height: 100vh;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.input-contianer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.submit-btn {
+  margin-top: 2rem;
+}
+
+.distance-text span {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.maps-container {
+  min-width: 50vw;
+  min-height: 90vh;
+}
+
+@media only screen and (max-width: 800px) {
+  .App {
+    flex-wrap: wrap;
+  }
+  .left-container {
+    width: 100%;
+    min-height: auto;
+    margin-bottom: 2rem;
+  }
+  .input-contianer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .maps-container {
+    min-width: 100vw;
+    min-height: 90vh;
+  }
+}
