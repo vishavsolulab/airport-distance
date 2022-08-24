@@ -85,7 +85,7 @@ const App: FunctionComponent = () => {
         )}
       </div>
       {location && (
-        <div className=" maps-container d-flex justify-content-center flex-column align-items-center">
+        <div className="maps-container d-flex justify-content-center flex-column align-items-center">
           <Maps from={location[0]} to={location[1]} />
         </div>
       )}

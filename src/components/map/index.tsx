@@ -24,7 +24,7 @@ const Map: FunctionComponent<MapProps> = ({ from, to }) => {
   const zoom = 3;
 
   return (
-    <Wrapper apiKey="AIzaSyAIoONB5C_eYpN-WedVbXaMK4lFbOTHtDI" render={render}>
+    <Wrapper apiKey={process.env.REACT_APP_END_POINT_URL || ""} render={render}>
       <MapComponent center={center} zoom={zoom} from={from} to={to} />
     </Wrapper>
   );

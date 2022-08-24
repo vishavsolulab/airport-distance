@@ -23,7 +23,7 @@ const SearchInput: FunctionComponent<SearchInputProps> = ({
   onChange,
 }) => {
   return (
-    <Stack spacing={2} sx={{ width: 300 }}>
+    <Stack spacing={2} className="w-300">
       <Autocomplete
         id="free-solo-demo"
         freeSolo

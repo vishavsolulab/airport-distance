@@ -22,9 +22,8 @@ const MapComponent: FunctionComponent<MapComponentProps> = ({
   from,
   to,
 }) => {
-  var map: any;
-  // var google: any;
-  var mapOptions = {
+  let map: any;
+  let mapOptions = {
     center: center,
     zoom: zoom,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -34,17 +33,17 @@ const MapComponent: FunctionComponent<MapComponentProps> = ({
     const portalDiv = document.getElementById("map")!;
     map = new google.maps.Map(portalDiv, mapOptions);
 
-    var userCoor: any = [
+    let userCoor: any = [
       ["a", from.latitude, from.longitude],
       ["b", to.latitude, to.longitude],
     ];
 
-    var userCoorPath = [
+    let userCoorPath = [
       new google.maps.LatLng(from.latitude, from.longitude),
       new google.maps.LatLng(to.latitude, to.longitude),
     ];
 
-    var userCoordinate = new google.maps.Polyline({
+    let userCoordinate = new google.maps.Polyline({
       path: userCoorPath,
       strokeColor: "#FF0000",
       strokeOpacity: 1,
@@ -54,7 +53,7 @@ const MapComponent: FunctionComponent<MapComponentProps> = ({
 
     map.setCenter(userCoordinate);
 
-    for (var i = 0; i < userCoor.length; i++) {
+    for (let i = 0; i < userCoor.length; i++) {
       new google.maps.Marker({
         position: new google.maps.LatLng(userCoor[i][1], userCoor[i][2]),
         map: map,
