@@ -80,8 +80,8 @@ const App: FunctionComponent = () => {
 
         {(milesDistance || milesDistance === 0) && (
           <div className="distance-text mt-5 w-75">
-            <span>{milesDistance.toFixed(2)}</span> miles is the distance From{" "}
-            <span>{fromValue}</span> To <span>{toValue}</span>
+            <div className="fw-bold fs-4">{milesDistance.toFixed(2)} miles</div>
+            Distance From <span>{fromValue}</span> To <span>{toValue}</span>
           </div>
         )}
       </div>
