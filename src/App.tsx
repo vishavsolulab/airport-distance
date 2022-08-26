@@ -1,7 +1,7 @@
 import { FunctionComponent, useState } from "react";
 import { Maps, SearchInput } from "./components";
 import { Button } from "@mui/material";
-import data from "./assests/data/us_airports.json";
+import data from "./_mocks/us_airpots.json";
 
 import { calculateDistance } from "./api/distance";
 
@@ -23,7 +23,7 @@ const App: FunctionComponent = () => {
     const fromLocation = data.filter(
       (item: { iata: string }) => item.iata === fromValue?.split(", ")[1]
     );
-    const toLocation = data.filter(
+    const toLocation: any = data.filter(
       (item: { iata: string }) => item.iata === toValue?.split(", ")[1]
     );
 
@@ -31,10 +31,12 @@ const App: FunctionComponent = () => {
       {
         latitude: parseFloat(fromLocation[0].lat),
         longitude: parseFloat(fromLocation[0].lng),
+        fromLocation,
       },
       {
         latitude: parseFloat(toLocation[0].lat),
         longitude: parseFloat(toLocation[0].lng),
+        toLocation,
       },
     ]);
     setMilesDistance(
@@ -51,8 +53,8 @@ const App: FunctionComponent = () => {
     );
   };
   return (
-    <div className="App d-flex">
-      <div className="left-container pt-5">
+    <div className="App d-flex justify-content-center">
+      <div className="left-container pt-5 w-100">
         <div className="input-contianer ">
           <SearchInput
             placeholder="From Airport"
@@ -65,16 +67,15 @@ const App: FunctionComponent = () => {
             data={data}
             onChange={handleToValueChange}
           />
-        </div>
-
-        <div className="submit-btn mt-5">
-          <Button
-            variant="contained"
-            onClick={handleSubmit}
-            disabled={!(fromValue && toValue)}
-          >
-            Calculate Distance
-          </Button>
+          <div className="submit-btn mt-5">
+            <Button
+              variant="contained"
+              onClick={handleSubmit}
+              disabled={!(fromValue && toValue)}
+            >
+              Calculate Distance
+            </Button>
+          </div>
         </div>
 
         {(milesDistance || milesDistance === 0) && (

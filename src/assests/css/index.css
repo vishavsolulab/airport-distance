@@ -1,3 +1,7 @@
+#root {
+  background-color: #efefef;
+}
+
 .App {
   text-align: center;
   max-width: 100vw;
@@ -19,6 +23,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 10px;
 }
 .submit-btn {
   margin-top: 2rem;
