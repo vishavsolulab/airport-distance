@@ -45,9 +45,10 @@ const MapComponent: FunctionComponent<MapComponentProps> = ({
 
     let userCoordinate = new google.maps.Polyline({
       path: userCoorPath,
-      strokeColor: "#FF0000",
+      geodesic: true,
+      strokeColor: "#41aff8",
       strokeOpacity: 1,
-      strokeWeight: 2,
+      strokeWeight: 5,
     });
     userCoordinate.setMap(map);
 
