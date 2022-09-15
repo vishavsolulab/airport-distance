@@ -1,15 +1,15 @@
 import { FunctionComponent, useState } from "react";
 import { Maps, SearchInput } from "./components";
 import { Button } from "@mui/material";
-import data from "./assests/data/us_airports.json";
+import data from "./_mocks/us_airpots.json";
 
 import { calculateDistance } from "./api/distance";
 
 const App: FunctionComponent = () => {
-  const [fromValue, setFromValue] = useState<string | null>(null);
-  const [toValue, setToValue] = useState<string | null>(null);
-  const [milesDistance, setMilesDistance] = useState<number | null>(null);
-  const [location, setLocation] = useState<any>(null);
+  const [fromValue, setFromValue] = useState<string | null>(null),
+    [toValue, setToValue] = useState<string | null>(null),
+    [milesDistance, setMilesDistance] = useState<number | null>(null),
+    [location, setLocation] = useState<any>(null);
 
   const handleFromValueChange = (_: any, newValue: string) => {
     setFromValue(newValue);
@@ -23,7 +23,7 @@ const App: FunctionComponent = () => {
     const fromLocation = data.filter(
       (item: { iata: string }) => item.iata === fromValue?.split(", ")[1]
     );
-    const toLocation = data.filter(
+    const toLocation: any = data.filter(
       (item: { iata: string }) => item.iata === toValue?.split(", ")[1]
     );
 
@@ -31,10 +31,12 @@ const App: FunctionComponent = () => {
       {
         latitude: parseFloat(fromLocation[0].lat),
         longitude: parseFloat(fromLocation[0].lng),
+        fromLocation,
       },
       {
         latitude: parseFloat(toLocation[0].lat),
         longitude: parseFloat(toLocation[0].lng),
+        toLocation,
       },
     ]);
     setMilesDistance(
@@ -51,36 +53,39 @@ const App: FunctionComponent = () => {
     );
   };
   return (
-    <div className="App d-flex">
-      <div className="left-container pt-5">
+    <div className="App d-flex justify-content-center">
+      <div className="left-container pt-5 w-100">
         <div className="input-contianer ">
-          <SearchInput
-            placeholder="From Airport"
-            data={data}
-            onChange={handleFromValueChange}
-          />
-          <SearchInput
-            placeholder="To Airport"
-            className="mt-5"
-            data={data}
-            onChange={handleToValueChange}
-          />
-        </div>
-
-        <div className="submit-btn mt-5">
-          <Button
-            variant="contained"
-            onClick={handleSubmit}
-            disabled={!(fromValue && toValue)}
-          >
-            Calculate Distance
-          </Button>
+          <p className="distance_label">Search by Airport Name or IATA airport code</p>
+          <div className="form_fields">
+            <SearchInput
+              placeholder="From Airport"
+              data={data}
+              onChange={handleFromValueChange}
+            />
+            <SearchInput
+              placeholder="To Airport"
+              className="mt-4"
+              data={data}
+              onChange={handleToValueChange}
+            />
+            <div className="submit-btn mt-4">
+              <Button
+                variant="contained"
+                onClick={handleSubmit}
+                disabled={!(fromValue && toValue)}
+              >
+                Calculate Distance
+              </Button>
+          </div>
+          </div>
         </div>
 
         {(milesDistance || milesDistance === 0) && (
           <div className="distance-text mt-5 w-75">
-            <span>{milesDistance.toFixed(2)}</span> miles is the distance From{" "}
-            <span>{fromValue}</span> To <span>{toValue}</span>
+            <div className="fw-bold fs-4">
+              {milesDistance.toFixed(2)} miles</div>
+            is the Distance From <span>{fromValue}</span> To <span>{toValue}</span>
           </div>
         )}
       </div>

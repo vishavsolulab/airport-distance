@@ -9,10 +9,12 @@ interface MapComponentProps {
   from: {
     latitude: number;
     longitude: number;
+    fromLocation?: any;
   };
   to: {
     latitude: number;
     longitude: number;
+    toLocation?: any;
   };
 }
 
@@ -27,6 +29,14 @@ const MapComponent: FunctionComponent<MapComponentProps> = ({
     center: center,
     zoom: zoom,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
+    showLocateMeButton: false,
+    showZoomButtons: true,
+    showMapTypeSelector: true,
+    disablePanning: false,
+    disableScrollWheelZoom: false,
+    minZoom: 2,
+    title: "markerTitle",
+    label: "Hello",
   };
 
   function initialize(): void {
@@ -34,8 +44,8 @@ const MapComponent: FunctionComponent<MapComponentProps> = ({
     map = new google.maps.Map(portalDiv, mapOptions);
 
     let userCoor: any = [
-      ["a", from.latitude, from.longitude],
-      ["b", to.latitude, to.longitude],
+      [from.fromLocation, from.latitude, from.longitude],
+      [to.toLocation, to.latitude, to.longitude],
     ];
 
     let userCoorPath = [
@@ -58,6 +68,7 @@ const MapComponent: FunctionComponent<MapComponentProps> = ({
       new google.maps.Marker({
         position: new google.maps.LatLng(userCoor[i][1], userCoor[i][2]),
         map: map,
+        title: userCoor[i][0][0].name,
       });
     }
   }

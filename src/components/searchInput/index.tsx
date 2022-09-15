@@ -27,6 +27,10 @@ const SearchInput: FunctionComponent<SearchInputProps> = ({
       <Autocomplete
         id="free-solo-demo"
         freeSolo
+        onPaste={(e)=>{
+          e.preventDefault()
+          return false;
+        }}
         className={className}
         options={data.map(
           (option: { name: string; iata: string }) =>

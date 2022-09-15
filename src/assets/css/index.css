@@ -1,6 +1,13 @@
+#root {
+  background-color: #efefef;
+}
+
 .App {
+  background: url('../img/airport-bg.jpeg');
   text-align: center;
   max-width: 100vw;
+  height: 100vh;
+  color: #fff;
 }
 .w-300 {
   width: 300px;
@@ -19,7 +26,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: #fff;
+  padding: 10px 0 40px;
+  color: #000;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
+.distance_label {border-bottom: 1px solid #e2e2e2; padding: 0 10px 10px;}
+.form_fields {padding: 10px 20px; }
+.submit-btn button {background: #fff; color: #1976d2; border: 1px solid;}
+.submit-btn button:hover {background: #1976d2; color: #fff; border: 1px solid;}
+.submit-btn button:disabled { background: #fff; opacity: 0.5; color: #1976d2; }
 .submit-btn {
   margin-top: 2rem;
 }
@@ -34,7 +51,7 @@
   min-height: 90vh;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 768px) {
   .App {
     flex-wrap: wrap;
   }

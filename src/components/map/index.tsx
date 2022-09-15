@@ -14,14 +14,16 @@ interface MapProps {
 }
 
 const render = (status: string) => {
-  if (status === Status.LOADING) return <h3>{status} ..</h3>;
-  if (status === Status.FAILURE) return <h3>{status} ...</h3>;
+  const isInActive = status === Status.LOADING || status === Status.FAILURE;
+  if (isInActive) {
+    return <h3>{status} ...</h3>;
+  }
   return <></>;
 };
 
 const Map: FunctionComponent<MapProps> = ({ from, to }) => {
-  const center = { lat: from.latitude, lng: from.longitude };
-  const zoom = 6;
+  const center = { lat: from.latitude, lng: from.longitude },
+    zoom = 4;
 
   return (
     <Wrapper apiKey={process.env.REACT_APP_END_POINT_URL || ""} render={render}>
