@@ -39,6 +39,7 @@ const App: FunctionComponent = () => {
         toLocation,
       },
     ]);
+    
     setMilesDistance(
       calculateDistance(
         {
